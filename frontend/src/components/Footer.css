@@ -1,0 +1,25 @@
+.footer {
+    background-color: #1a1818; 
+    color: #786f6f;
+    padding: 20px 0; 
+  }
+ 
+  .list-unstyled a{
+
+      color: rgb(126, 135, 143) !important;
+      font-size: 13px !important;
+      text-decoration-line: none !important;
+  }
+  .list-unstyled a:hover{
+    color: rgb(172, 172, 162) !important;
+    text-decoration-line: underline !important;
+  }
+  h5{
+    font-family: "Anta", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+  
+  hr{
+      background-color: rgb(171, 134, 134);
+  }

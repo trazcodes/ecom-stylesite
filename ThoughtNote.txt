@@ -1,0 +1,12 @@
+Hello im Kushal himmatsinghka and this is my Ecommerce app project.
+
+It contains Home Page, Women,Men,Search Search, Cart pages.
+
+for admin access:
+username: kushal27001@gmail.com
+password: hello
+
+We can add items to cart.
+Different options for login for user and admin.
+
+Checkout, order history are in progress. 

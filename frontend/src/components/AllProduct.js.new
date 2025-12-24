@@ -1,0 +1,287 @@
+import { Layout } from 'antd'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { Checkbox, Radio, Input, Button, Select, Card, Divider } from 'antd'
+import Prices from './Prices';
+import {useCart} from "./context/cart"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+function AllProduct() {
+    const navigate = useNavigate();
+    const [cart,setCart] = useCart([])
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const token = localStorage.getItem('token');
+    const [checked, setChecked] = useState([])
+    const [radio, setRadio] = useState([])
+    const [total, setTotal] = useState(0)
+    const [page, setPage] = useState(1)
+    const [loading, setLoading] = useState(false)
+    const [searchTerm, setSearchTerm] = useState('');
+    const [sortBy, setSortBy] = useState('');
+
+    // get total Count
+    const getTotal = async () => {
+        try { 
+            const resp = await axios.get('http://localhost:8080/api/count-product', {
+            });
+            setTotal(resp?.data?.total);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    }
+
+    // load more
+    const loadMore = async ()=>{
+        try {
+            setLoading(true)
+            const {data} = await axios.get(`http://localhost:8080/api/list-product/${page}`)
+            setLoading(false)
+            setProducts([...products, ...data?.products])
+        } catch (error) {
+            setLoading(false)
+            console.log(error);
+        }
+    }
+
+    // get all Products
+    const getAllProducts = async () => {
+        try {
+            setLoading(true)
+            const resp = await axios.get(`http://localhost:8080/api/list-product/${page}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            setLoading(false)
+
+            setProducts(resp.data.products);
+        } catch (error) {
+            setLoading(false)
+
+            console.error('Error fetching products:', error);
+        }
+    }
+    
+    // Filter by Category
+    const handleFilter = (value,id) =>{
+        let all = [...checked]
+        if(value){
+            all.push(id)
+        }
+        else{
+            all = all.filter(c => c!== id)
+        }
+        setChecked(all);
+    }
+    
+    // SHOW CATEGORY LIST
+    const getAllCategory = async () => {
+        try {
+            const resp = await axios.get('http://localhost:8080/api/category', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            setCategories(resp.data?.category);
+        } catch (error) {
+            console.error('Error fetching categories:', error);
+        }
+    };
+    
+    // Filter Product
+    const productFilter = async () =>{
+        try {
+            const {data} = await axios.post('http://localhost:8080/api/filter-product',{checked,radio})
+            setProducts(data?.products)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Handle search filter
+    const handleSearch = (e) => {
+        const term = e.target.value;
+        setSearchTerm(term);
+        if (term) {
+            const filteredProducts = products.filter(p => 
+                p.name.toLowerCase().includes(term.toLowerCase()) ||
+                p.description.toLowerCase().includes(term.toLowerCase())
+            );
+            setProducts(filteredProducts);
+        } else {
+            getAllProducts();
+        }
+    }
+
+    // Handle sort
+    const handleSort = (value) => {
+        setSortBy(value);
+        let sortedProducts = [...products];
+        
+        if (value === 'price-low') {
+            sortedProducts.sort((a, b) => a.price - b.price);
+        } else if (value === 'price-high') {
+            sortedProducts.sort((a, b) => b.price - a.price);
+        } else if (value === 'name-asc') {
+            sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (value === 'name-desc') {
+            sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
+        }
+        
+        setProducts(sortedProducts);
+    }
+
+    // Reset all filters
+    const resetFilters = () => {
+        setChecked([]);
+        setRadio([]);
+        setSearchTerm('');
+        setSortBy('');
+        getAllProducts();
+    }
+
+    useEffect(() => {
+        if (!checked.length || !radio.length) getAllCategory();
+        if (checked.length || radio.length) productFilter();
+        getTotal();
+        getAllProducts();
+    }, [checked, radio, checked.length, radio.length]);
+    
+    useEffect(() => {
+        if(page==1) return;
+        loadMore()
+    }, [page]);
+    
+    return (
+        <Layout className='container-fluid' title={"All Products - Best Offers"}>
+            <div className='row mt-3'>
+                <div className='col-md-3'>
+                    <Card title="Product Filters" className="mb-4 p-2" bordered={true}>
+                        <div className="mb-3">
+                            <h5>Search Products</h5>
+                            <Input 
+                                placeholder="Enter product name..." 
+                                value={searchTerm}
+                                onChange={handleSearch}
+                                className="w-100"
+                            />
+                        </div>
+                        
+                        <Divider />
+                        
+                        <div className="mb-3">
+                            <h5>Sort By</h5>
+                            <Select
+                                className="w-100"
+                                placeholder="Sort products"
+                                value={sortBy}
+                                onChange={handleSort}
+                                options={[
+                                    { value: 'price-low', label: 'Price: Low to High' },
+                                    { value: 'price-high', label: 'Price: High to Low' },
+                                    { value: 'name-asc', label: 'Name: A-Z' },
+                                    { value: 'name-desc', label: 'Name: Z-A' },
+                                ]}
+                            />
+                        </div>
+                        
+                        <Divider />
+                        
+                        <div className="mb-3">
+                            <h5>Filter By Category</h5>
+                            <div style={{ maxHeight: '150px', overflowY: 'auto' }}>
+                                {categories?.map(c=>(
+                                    <div key={c._id} className="mb-2">
+                                        <Checkbox onChange={(e)=> handleFilter(e.target.checked, c._id)}>
+                                            {c.slug}
+                                        </Checkbox>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        
+                        <Divider />
+                        
+                        <div className="mb-3">
+                            <h5>Filter By Price</h5>
+                            <Radio.Group onChange={e=>setRadio(e.target.value)} className="d-flex flex-column">
+                                {Prices?.map(p=>(
+                                    <div key={p.id} className="mb-2">
+                                        <Radio value={p.array}>{p.name}</Radio>
+                                    </div>
+                                ))}
+                            </Radio.Group>
+                        </div>
+                        
+                        <Button 
+                            type="primary" 
+                            danger 
+                            onClick={resetFilters}
+                            className="w-100 mt-3"
+                        >
+                            Reset All Filters
+                        </Button>
+                    </Card>
+                </div>
+                
+                <div className='col-md-9'>
+                    <h1 className='text-center mb-4'>All Products</h1>
+                    <div className='row'>
+                        {products?.map(p => (
+                            <div key={p._id} className="col-md-4 col-sm-6 mb-4">
+                                <div className="card h-100">
+                                    <div style={{ height: "200px", overflow: "hidden" }}>
+                                        <img 
+                                            src={`http://localhost:8080/api/product-photo/${p._id}`} 
+                                            className="card-img-top" 
+                                            alt={p.name} 
+                                            style={{ height: "100%", width: "100%", objectFit: "cover" }} 
+                                        />
+                                    </div>
+                                    <div className="card-body d-flex flex-column">
+                                        <h5 className="card-title">{p.name}</h5>
+                                        <p className="card-text">{p.description.substring(0,30)}...</p>
+                                        <h5 className="card-text mt-auto mb-3">Rs. {p.price}</h5>
+                                        <div className="mt-auto">
+                                            <button 
+                                                className='btn btn-primary w-100 mb-2' 
+                                                onClick={()=> navigate(`/product/${p.slug}`)}
+                                            >
+                                                More Details
+                                            </button>
+                                            <button 
+                                                className='btn btn-warning w-100' 
+                                                onClick={()=>{
+                                                    setCart([...cart, p])
+                                                    localStorage.setItem('cart', JSON.stringify([...cart,p]))
+                                                    toast.success('Item added to cart')
+                                                }}
+                                            >
+                                                Add to Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className='text-center mt-4 mb-4'>
+                        {products && products.length < total && (
+                            <button 
+                                className='btn btn-outline-primary btn-lg px-5' 
+                                onClick={(e)=>{
+                                    e.preventDefault()
+                                    setPage(page+1);
+                                }}
+                            >
+                                {loading ? "Loading..." : "Load more"}
+                            </button>
+                        )}
+                        <ToastContainer/>
+                    </div>
+                </div>
+            </div>
+        </Layout>
+    )
+}
+
+export default AllProduct

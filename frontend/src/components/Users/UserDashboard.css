@@ -1,0 +1,24 @@
+.admin-panel-name {
+    font-size: 20px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid black; /* Set border color to black */
+}
+.table-item-delete:hover{
+    color: red;
+    cursor: pointer;
+}
+.table-item-edit:hover{
+    color: red;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .hide-mid {
+        display: none;
+    }
+}
+
+.list-group-item.active {
+    z-index: 0 !important;
+}

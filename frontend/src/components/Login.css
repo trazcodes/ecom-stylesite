@@ -1,0 +1,29 @@
+.login-slick-img {
+
+    max-width: 600px;
+    max-height: 500px;
+}
+
+.login-small {
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+}
+.login-btn{
+    display:block;
+    justify-content: center !important;
+    text-align: center !important;
+}
+.login-form{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.register-card{
+    background-image: url('../img/Photo6.png');
+    background-repeat: no-repeat;
+    max-height: 900px !important;
+    
+}
+/* Login.css */
+
+/* Custom input styles */

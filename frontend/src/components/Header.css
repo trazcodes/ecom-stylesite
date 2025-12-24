@@ -1,0 +1,853 @@
+/* Header Styles - Using Bootstrap color system */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body.light-mode {
+    background-color: #f8f9fa;
+}
+
+body.dark-mode {
+    background-color: #212529;
+}
+
+/* Header Brand Name */
+.brand-name {
+    display: flex !important;
+    justify-content: center !important;
+    font-family: var(--font-heading);
+    font-size: 1.5rem !important;
+    font-weight: 300;
+}
+
+body.light-mode .brand-name {
+    color: #212529;
+}
+
+body.dark-mode .brand-name {
+    color: #f8f9fa;
+}
+
+/* Toggler Horizontal Line */
+.horizontal-line {
+    border-bottom: 1px solid #6c757d;
+    margin: auto;
+    display: block;
+    width: 90%;
+}
+
+/* Standardize spacing and colors for all navigation buttons */
+.navbar .nav-link,
+.navbar .header-btn,
+.navbar .dropdown-toggle,
+.navbar button,
+.navbar a,
+#basic-nav-dropdown {
+    padding: 0.5rem 0.75rem !important;
+    margin: 0 0.125rem !important;
+    color: inherit !important;
+    font-size: 0.8125rem !important;
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Consistent colors for light mode */
+body.light-mode .navbar .nav-link,
+body.light-mode .navbar .header-btn,
+body.light-mode .navbar .dropdown-toggle,
+body.light-mode .navbar button,
+body.light-mode .navbar a,
+body.light-mode #basic-nav-dropdown {
+    color: #212529 !important;
+}
+
+/* Consistent colors for dark mode */
+body.dark-mode .navbar .nav-link,
+body.dark-mode .navbar .header-btn,
+body.dark-mode .navbar .dropdown-toggle,
+body.dark-mode .navbar button,
+body.dark-mode .navbar a,
+body.dark-mode #basic-nav-dropdown {
+    color: #f8f9fa !important;
+}
+
+/* Hover states */
+.navbar .nav-link:hover,
+.navbar .header-btn:hover,
+.navbar .dropdown-toggle:hover,
+.navbar button:hover,
+.navbar a:hover,
+#basic-nav-dropdown:hover {
+    color: var(--primary-color) !important;
+}
+
+body.dark-mode .navbar .nav-link:hover,
+body.dark-mode .navbar .header-btn:hover,
+body.dark-mode .navbar .dropdown-toggle:hover,
+body.dark-mode .navbar button:hover,
+body.dark-mode .navbar a:hover,
+body.dark-mode #basic-nav-dropdown:hover {
+    color: var(--primary-light) !important;
+}
+
+/* Fix alignment of nav items in second navigation bar */
+.nav2-container .navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.nav2-container .nav-item {
+    margin: 0 1rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Custom Navigation Styling */
+.nav2-container {
+    background-color: #1e2124;
+    border-top: 1px solid #3a4756;
+    border-bottom: 1px solid #3a4756;
+    position: sticky;
+    top: var(--navbar-height, 60px);
+    z-index: 999;
+}
+
+body.light-mode .nav2-container {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.nav2-container .container {
+    max-width: 1200px;
+    padding: 0 1rem;
+    margin: 0 auto;
+}
+
+.main-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 0.75rem 0;
+}
+
+/* Main navigation items styling */
+.main-nav-item, 
+.main-nav-dropdown .dropdown-label {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 0.75rem;
+    color: #f8f9fa;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+body.light-mode .main-nav-item {
+    color: #212529;
+}
+
+body.dark-mode .main-nav-item {
+    color: #f8f9fa !important;
+}
+
+/* Consistent hover effects for all navigation elements */
+.main-nav-item:hover,
+.main-nav-dropdown .dropdown-label:hover,
+.main-nav-dropdown:hover .dropdown-label {
+    color: var(--primary-light) !important;
+    text-decoration: none;
+}
+
+body.light-mode .main-nav-item:hover,
+body.light-mode .main-nav-dropdown .dropdown-label:hover,
+body.light-mode .main-nav-dropdown:hover .dropdown-label {
+    color: var(--primary-color) !important;
+}
+
+body.dark-mode .main-nav-item:hover,
+body.dark-mode .main-nav-dropdown .dropdown-label:hover,
+body.dark-mode .main-nav-dropdown:hover .dropdown-label {
+    color: var(--primary-light) !important;
+}
+
+/* Add underline effect consistently */
+.main-nav-item::after,
+.main-nav-dropdown .dropdown-label::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-light);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+body.light-mode .main-nav-item::after,
+body.light-mode .main-nav-dropdown .dropdown-label::before {
+    background-color: var(--primary-color);
+}
+
+.main-nav-item:hover::after,
+.main-nav-dropdown:hover .dropdown-label::before {
+    width: 50%;
+    left: 25%;
+}
+
+/* Force all navigation elements to use white text in dark mode */
+body.dark-mode .nav2-container a,
+body.dark-mode .nav2-container .navbar-nav a,
+body.dark-mode .nav2-container .navbar-nav > li > a,
+body.dark-mode .nav2-container .dropdown-toggle,
+body.dark-mode .nav2-container .dropdown-label,
+body.dark-mode .nav2-container .main-nav-item {
+    color: #f8f9fa !important;
+}
+
+/* Force consistent color in light mode */
+body.light-mode .nav2-container a,
+body.light-mode .nav2-container .navbar-nav a,
+body.light-mode .nav2-container .navbar-nav > li > a,
+body.light-mode .nav2-container .dropdown-toggle,
+body.light-mode .nav2-container .dropdown-label,
+body.light-mode .nav2-container .main-nav-item {
+    color: #212529 !important;
+}
+
+/* Hover effects */
+.main-nav-item:hover,
+.main-nav-dropdown .dropdown-label:hover,
+.main-nav-dropdown:hover .dropdown-label {
+    color: var(--primary-light);
+    text-decoration: none;
+}
+
+body.light-mode .main-nav-item:hover,
+body.light-mode .main-nav-dropdown .dropdown-label:hover,
+body.light-mode .main-nav-dropdown:hover .dropdown-label {
+    color: var(--primary-color);
+}
+
+/* Fix dropdown hover issues */
+.main-nav-dropdown {
+    position: relative;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dropdown-label {
+    color: #444;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+/* Improved dropdown content styling */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9997 !important;
+    min-width: 220px;
+    background-color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    padding: 10px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    margin-right: 15px;
+}
+
+body.dark-mode .dropdown-content {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Show dropdown with animation */
+.dropdown-content.show {
+    display: block;
+    opacity: 1;
+    animation: dropdownFadeIn 0.25s ease-out forwards;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Improved dropdown items */
+.dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-left: 3px solid transparent;
+    margin: 2px 0;
+    position: relative;
+}
+
+/* Item separator */
+.dropdown-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .dropdown-item:not(:last-child)::after {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .dropdown-item {
+    color: #e2e8f0;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+    border-left: 3px solid var(--primary-color);
+    padding-left: 23px;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: #3a4756;
+    color: var(--primary-light);
+    border-left: 3px solid var(--primary-light);
+}
+
+/* Add subtle arrow to dropdown */
+.dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background-color: inherit;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .dropdown-content::before {
+    border-color: #4a5568;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .main-navigation {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .main-nav-item, 
+    .main-nav-dropdown .dropdown-label {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+    }
+    
+    .dropdown-content {
+        min-width: 180px;
+        left: 0;
+        transform: none;
+    }
+    
+    .dropdown-content::before {
+        left: 20px;
+    }
+    
+    .dropdown-content.show {
+        animation: dropdownFadeInMobile 0.25s ease-out forwards;
+    }
+    
+    @keyframes dropdownFadeInMobile {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* For upper navigation - consistent spacing */
+.navbar > .container-fluid > .navbar-nav > .nav-item {
+    margin: 0 0.125rem;
+    display: flex;
+    align-items: center;
+}
+
+/* For text below icons in nav links */
+.header-btn br + * {
+    font-size: 0.75rem !important;
+    display: block;
+    margin-top: 0.125rem;
+}
+
+/* Navbar Dropdown Items */
+.custom-dropdown-item {
+    padding: var(--space-2) var(--space-4) !important;
+    font-family: var(--font-body);
+}
+
+.custom-dropdown-item:hover {
+    display: inline-block;
+    background-color: rgba(33, 248, 104, 0.1);
+    color: var(--primary-color);
+    border: none;
+    text-decoration: none;
+}
+
+body {
+    background-attachment: fixed;
+    font-family: var(--font-body) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-style: normal;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.dropdown-toggle {
+    transition: color 0.3s ease;
+    font-size: 0.8125rem !important; /* 13px */
+    letter-spacing: -0.01em;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+.navbar-brand {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+body.light-mode .navbar-brand {
+    color: #212529 !important;
+}
+
+body.dark-mode .navbar-brand {
+    color: #f8f9fa !important;
+}
+
+.dropdown-hover:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    border: 1px solid;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .dropdown-menu {
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: #212529;
+    border-color: #495057;
+    color: #f8f9fa;
+}
+
+.dropdown-item {
+    transition: color 0.3s ease;
+    text-decoration: none !important;
+}
+
+body.light-mode .dropdown-item {
+    color: #212529;
+}
+
+body.dark-mode .dropdown-item {
+    color: #f8f9fa;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(74, 111, 165, 0.1);
+    color: var(--primary-color);
+    text-decoration: none !important;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: #2d3748;
+    color: #90cdf4;
+}
+
+.icon-container {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    display: inline-block;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.header-btn i, .navbar i {
+    font-size: 0.875rem !important; /* 14px */
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.flip180 {
+    transform: rotateY(180deg);
+}
+
+.btn {
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.off {
+    color: var(--secondary-color) !important;
+}
+
+.on {
+    color: var(--primary-color) !important;
+}
+
+/* Make sure navbar and background match the theme */
+body.light-mode .navbar {
+    background-color: #fff !important;
+}
+
+body.dark-mode .navbar {
+    background-color: #212529 !important;
+}
+
+/* Override navbar-toggler for dark mode */
+.navbar-toggler {
+    border: none;
+    box-shadow: none !important;
+}
+
+body.light-mode .navbar-toggler {
+    color: #212529;
+}
+
+body.dark-mode .navbar-toggler {
+    color: #f8f9fa;
+}
+
+body.light-mode .navbar-toggler-icon {
+    filter: brightness(0);
+}
+
+body.dark-mode .navbar-toggler-icon {
+    filter: brightness(10);
+}
+
+/* Offcanvas styling */
+.offcanvas {
+    transition: background-color 0.3s ease;
+}
+
+body.light-mode .offcanvas {
+    background-color: #fff;
+}
+
+body.dark-mode .offcanvas {
+    background-color: #212529;
+    color: #f8f9fa;
+}
+
+/* Remove excess shadows that make parts look like separate cards */
+.navbar-expand-lg .navbar-collapse {
+    box-shadow: none !important;
+}
+
+.navbar-offcanvas {
+    box-shadow: none !important;
+}
+
+.offcanvas-header {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.offcanvas-header .btn-close {
+    box-shadow: none !important;
+}
+
+body.light-mode .offcanvas-header .btn-close {
+    filter: brightness(0);
+}
+
+body.dark-mode .offcanvas-header .btn-close {
+    filter: brightness(10);
+}
+
+/* Nav links should all have consistent styling */
+.nav-link {
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+    font-size: 0.8125rem !important; /* 13px */
+    letter-spacing: -0.01em;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+.nav-link:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Override Bootstrap defaults that show links as blue */
+a:any-link {
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+/* Remove shadows from header buttons */
+.nav-item .btn,
+.navbar .btn {
+    box-shadow: none !important;
+}
+
+/* Fix top right options from overflowing */
+.navbar-nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+/* Make sure header content stays within bounds */
+.container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    overflow-x: hidden;
+}
+
+.navbar .container-fluid {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* Ensure top right icons don't overflow */
+.navbar .header-btn {
+    padding-left: 8px;
+    padding-right: 8px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.navbar-nav .nav-link {
+    font-size: 0.75rem !important; /* 12px */
+    white-space: nowrap;
+}
+
+.nav2-container .navbar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.nav2-container .nav-link {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+/* Ensure even spacing in top navbar */
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 0.5rem !important;
+        padding-left: 0.5rem !important;
+    }
+}
+
+/* Better visibility for dropdowns in dark mode */
+body.dark-mode .nav-item .dropdown-toggle::after {
+    color: #f8f9fa;
+}
+
+/* Override all navigation colors with !important directive */
+.nav2-container .nav-link,
+.nav2-container .dropdown-toggle,
+.nav2-container a.nav-link,
+.nav2-container .dropdown > a,
+.nav2-container .navbar-nav .nav-link,
+.nav2-container .navbar-nav .dropdown-toggle,
+.nav2-container #women-dropdown,
+.nav2-container #men-dropdown,
+.nav2-container #kids-dropdown,
+.nav2-container .text-nav {
+    color: #f8f9fa !important;
+    background-color: transparent !important;
+}
+
+body.light-mode .nav2-container .nav-link,
+body.light-mode .nav2-container .dropdown-toggle,
+body.light-mode .nav2-container a.nav-link,
+body.light-mode .nav2-container .dropdown > a,
+body.light-mode .nav2-container .navbar-nav .nav-link,
+body.light-mode .nav2-container .navbar-nav .dropdown-toggle,
+body.light-mode .nav2-container #women-dropdown,
+body.light-mode .nav2-container #men-dropdown,
+body.light-mode .nav2-container #kids-dropdown,
+body.light-mode .nav2-container .text-nav {
+    color: #212529 !important;
+    background-color: transparent !important;
+}
+
+/* Fix hover state */
+.nav2-container .nav-link:hover,
+.nav2-container .dropdown-toggle:hover,
+.nav2-container a.nav-link:hover,
+.nav2-container .dropdown > a:hover,
+.nav2-container .text-nav:hover {
+    color: var(--primary-light) !important;
+}
+
+body.light-mode .nav2-container .nav-link:hover,
+body.light-mode .nav2-container .dropdown-toggle:hover,
+body.light-mode .nav2-container a.nav-link:hover,
+body.light-mode .nav2-container .dropdown > a:hover,
+body.light-mode .nav2-container .text-nav:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Ensure caret inherits color too */
+.nav2-container .dropdown-toggle::after {
+    color: inherit !important;
+    border-top-color: inherit !important;
+}
+
+/* Remove any unwanted backgrounds */
+.nav2-container,
+.nav2-container .navbar,
+.nav2-container .navbar-nav,
+.nav2-container .nav-item,
+.nav2-container .navbar-collapse,
+.nav2-container .dropdown,
+.nav2-container .dropdown-menu {
+    background-color: #1e2124 !important;
+}
+
+body.light-mode .nav2-container,
+body.light-mode .nav2-container .navbar,
+body.light-mode .nav2-container .navbar-nav,
+body.light-mode .nav2-container .nav-item,
+body.light-mode .nav2-container .navbar-collapse,
+body.light-mode .nav2-container .dropdown {
+    background-color: #f8f9fa !important;
+}
+
+body.light-mode .nav2-container .dropdown-menu {
+    background-color: #ffffff !important;
+}
+
+/* Add back dropdown arrow indicator */
+.main-nav-dropdown .dropdown-label::after {
+    content: '';
+    display: inline-block;
+    margin-left: 0.5em;
+    vertical-align: 0.255em;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    color: inherit;
+}
+
+/* Visual indicator on hover */
+.main-nav-item::after,
+.main-nav-dropdown .dropdown-label::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-light);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+body.light-mode .main-nav-item::after,
+body.light-mode .main-nav-dropdown .dropdown-label::before {
+    background-color: var(--primary-color);
+}
+
+.main-nav-item:hover::after,
+.main-nav-dropdown:hover .dropdown-label::before {
+    width: 50%;
+    left: 25%;
+}
+
+/* Add this to ensure no gap between headers */
+.navbar + .nav2-container {
+    margin-top: 0 !important;
+}
+
+/* Adjust navbar height if needed */
+.navbar .container-fluid {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* Ensure the "row" doesn't have any margins too */
+.row {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}

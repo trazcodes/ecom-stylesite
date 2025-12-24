@@ -1,0 +1,204 @@
+/* Global Dark Mode Styles 
+   This file applies dark mode styles to all components */
+
+/* Body and container backgrounds */
+body.dark-mode,
+body.dark-mode .container,
+body.dark-mode .container-fluid,
+body.dark-mode .bg-light,
+body.dark-mode .bg-white {
+    background-color: #212529 !important;
+    color: #f8f9fa !important;
+}
+
+/* Card styling for dark mode */
+body.dark-mode .card,
+body.dark-mode .list-group-item,
+body.dark-mode .modal-content {
+    background-color: #343a40 !important;
+    border-color: #495057 !important;
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .card-header,
+body.dark-mode .modal-header {
+    background-color: #343a40 !important;
+    border-bottom-color: #495057 !important;
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .summary-card {
+    background-color: #343a40 !important;
+}
+
+/* Texts and headings */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6,
+body.dark-mode .card-title,
+body.dark-mode label,
+body.dark-mode .form-label {
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .text-dark {
+    color: #f8f9fa !important;
+}
+
+body.dark-mode p,
+body.dark-mode .card-text,
+body.dark-mode .text-muted {
+    color: #e9ecef !important;
+}
+
+/* Form elements */
+body.dark-mode .form-control,
+body.dark-mode .form-select,
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode .dropdown-toggle {
+    background-color: #343a40 !important;
+    border-color: #495057 !important;
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #adb5bd !important;
+}
+
+body.dark-mode .form-control:focus {
+    background-color: #343a40 !important;
+    border-color: #6ea8fe !important;
+    box-shadow: 0 0 0 0.25rem rgba(110, 168, 254, 0.25) !important;
+    color: #f8f9fa !important;
+}
+
+/* Table styles */
+body.dark-mode table,
+body.dark-mode .table {
+    color: #f8f9fa !important;
+    border-color: #495057 !important;
+}
+
+body.dark-mode .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .table-hover > tbody > tr:hover > * {
+    background-color: rgba(255, 255, 255, 0.075) !important;
+    color: #f8f9fa !important;
+}
+
+body.dark-mode thead {
+    background-color: #212529 !important;
+    color: #f8f9fa !important;
+}
+
+/* Dropdown menus */
+body.dark-mode .dropdown-menu {
+    background-color: #343a40 !important;
+    border-color: #495057 !important;
+}
+
+body.dark-mode .dropdown-item {
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: #495057 !important;
+}
+
+/* Buttons */
+body.dark-mode .btn-light {
+    background-color: #343a40 !important;
+    border-color: #495057 !important;
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .btn-outline-dark {
+    color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+}
+
+body.dark-mode .btn-outline-dark:hover {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+}
+
+/* Borders and dividers */
+body.dark-mode .border,
+body.dark-mode .border-top,
+body.dark-mode .border-bottom,
+body.dark-mode .border-start,
+body.dark-mode .border-end {
+    border-color: #495057 !important;
+}
+
+body.dark-mode hr {
+    border-color: #495057 !important;
+}
+
+/* Links */
+body.dark-mode a:not(.btn) {
+    color: #6ea8fe !important;
+}
+
+body.dark-mode a:not(.btn):hover {
+    color: #9ec5fe !important;
+}
+
+/* Ant Design components */
+body.dark-mode .ant-layout,
+body.dark-mode .ant-layout-content {
+    background-color: #212529 !important;
+}
+
+body.dark-mode .ant-card {
+    background-color: #343a40 !important;
+    border-color: #495057 !important;
+}
+
+body.dark-mode .ant-card-head {
+    background-color: #343a40 !important;
+    border-bottom-color: #495057 !important;
+}
+
+body.dark-mode .ant-card-head-title {
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .ant-input,
+body.dark-mode .ant-select-selector,
+body.dark-mode .ant-select-selection-placeholder {
+    background-color: #343a40 !important;
+    border-color: #495057 !important;
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .ant-select-arrow {
+    color: #adb5bd !important;
+}
+
+body.dark-mode .ant-checkbox-wrapper,
+body.dark-mode .ant-radio-wrapper {
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .ant-divider {
+    border-top-color: #495057 !important;
+}
+
+/* Specific component fixes */
+body.dark-mode .cart-text {
+    color: #f8f9fa !important;
+}
+
+/* Fix for light text on primary/warning buttons */
+body.dark-mode .btn-primary,
+body.dark-mode .btn-warning {
+    color: #fff !important;
+}

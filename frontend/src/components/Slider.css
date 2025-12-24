@@ -1,0 +1,282 @@
+/* =========================
+   CAROUSEL CONTAINER
+========================= */
+
+.carousel-container {
+  padding: var(--spacing-6) var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  background-color: var(--bg-primary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.dark-mode .carousel-container {
+  background-color: var(--bg-secondary);
+}
+
+.carousel-title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-4);
+  padding-bottom: var(--spacing-2);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.dark-mode .carousel-title {
+  color: var(--text-on-dark);
+}
+
+/* =========================
+   SLICK CORE FIXES (CRITICAL)
+========================= */
+
+.slick-track {
+  display: flex !important;
+}
+
+.slick-slide {
+  height: auto !important;
+}
+
+.slick-slide > div {
+  height: 100%;
+}
+
+/* Allow buttons/content to show */
+.slick-list {
+  overflow: visible;
+}
+
+/* =========================
+   SLIDE SPACING
+========================= */
+
+.carousel-item-wrapper,
+.carousel-item-container {
+  padding: 0 12px;
+  height: 100%;
+}
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.product-card,
+.carousel-product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 460px;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--neutral-200);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.dark-mode .product-card,
+.dark-mode .carousel-product-card {
+  background-color: var(--bg-secondary);
+  border-color: var(--neutral-700);
+}
+
+.product-card:hover,
+.carousel-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.product-card img,
+.carousel-product-card img {
+  height: 260px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   CARD BODY
+========================= */
+
+.product-card .card-body,
+.carousel-product-card .card-body {
+  flex: 1;
+  padding: var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+/* =========================
+   TEXT STYLES
+========================= */
+
+.product-text {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-2);
+}
+
+.dark-mode .product-text {
+  color: var(--text-on-dark);
+}
+
+.product-price {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.dark-mode .product-price {
+  color: var(--text-on-dark);
+}
+
+.product-sale {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-2);
+}
+
+/* =========================
+   BUTTON GROUP
+========================= */
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: var(--spacing-2);
+}
+
+/* =========================
+   BUTTON STYLES
+========================= */
+
+.btn-cart,
+.btn-details {
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-cart {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--text-on-primary);
+}
+
+.btn-cart:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-details {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  color: var(--text-on-secondary);
+}
+
+.btn-details:hover {
+  background-color: var(--secondary-dark);
+  border-color: var(--secondary-dark);
+}
+
+/* =========================
+   SLICK ARROWS
+========================= */
+
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: var(--primary-dark);
+}
+
+.slick-prev {
+  left: -10px;
+}
+
+.slick-next {
+  right: -10px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 24px;
+  opacity: 1;
+  color: #fff;
+}
+
+/* =========================
+   SLICK DOTS
+========================= */
+
+.slick-dots {
+  bottom: -35px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: var(--primary-color);
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: var(--primary-color);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  .product-card img,
+  .carousel-product-card img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-container {
+    padding: var(--spacing-4) var(--spacing-2);
+  }
+
+  .carousel-title {
+    font-size: 1.5rem;
+  }
+
+  .slick-prev {
+    left: -5px;
+  }
+
+  .slick-next {
+    right: -5px;
+  }
+}
+
+
