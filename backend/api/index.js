@@ -18,7 +18,7 @@ app.use(express.json());
 //middleware 
 app.use(morgan('dev'));
 //accessing route
-app.use('', require('../route'))
+app.use('/', require('../route'))
 if (process.env.NODE_ENV !== 'production') {
     app.listen(8080, () => {
         console.log(`Backend running on http://localhost:8080`);
