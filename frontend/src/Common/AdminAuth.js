@@ -5,7 +5,7 @@ export const isAdminAuth = async () => {
   if (isAuth()) {
     try {
       const token = localStorage.getItem('token');
-      const resp = await axios.get('http://localhost:8080/api/isadmin', {
+      const resp = await axios.get('/api/isadmin', {
         headers: {'Authorization': `Bearer ${token}`}
       }); 
       return resp.data.result !== 0; // Convert result to boolean

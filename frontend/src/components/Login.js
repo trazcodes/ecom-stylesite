@@ -25,7 +25,7 @@ const Login = () => {
         event.preventDefault();
         const email = event.target.email.value;        
         try {
-            const response = await axios.post('http://localhost:8080/api/login', { email, password });
+            const response = await axios.post('/api/login', { email, password });
             // IF SUCCESS, STORE TOKEN IN LOCAL STORAGE
             if (response.status === 200) { 
               const { user ,token } = response.data.result;

@@ -19,5 +19,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 //accessing route
 app.use('/api', require('../route'))
-
+app.listen(8080, () => {
+  console.log(`Backend running on http://localhost:8080`);
+});
 module.exports = app;
