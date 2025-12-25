@@ -25,7 +25,7 @@ const Login = () => {
         event.preventDefault();
         const email = event.target.email.value;
         try {
-            const response = await API.post('/api/login', { email, password });
+            const response = await API.post('api/login', { email, password });
             // IF SUCCESS, STORE TOKEN IN LOCAL STORAGE
             if (response.status === 200) {
                 const { user, token } = response.data.result;
