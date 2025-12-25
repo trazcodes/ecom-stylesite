@@ -20,19 +20,23 @@ app.use(morgan('dev'));
 const NODE_ENV = process.env.NODE_ENV || "development";
 //accessing route
 
-app.use('/', require('./route'));
+app.get("/", (req, res) => {
+    res.send("Hello World! 123");
+});
+
+app.use('/api', require('./route'));
 const startServer = async () => {
-  try {
-    await connectDB();
-    if (NODE_ENV !== "production") {
-      app.listen(process.env.PORT, () => {
-        console.log("Server started on port:", process.env.PORT);
-      });
+    try {
+        await connectDB();
+        if (NODE_ENV !== "production") {
+            app.listen(process.env.PORT, () => {
+                console.log("Server started on port:", process.env.PORT);
+            });
+        }
+    } catch (error) {
+        console.error("Error starting server:", error);
+        process.exit(1); // Exit the process with a failure code
     }
-  } catch (error) {
-    console.error("Error starting server:", error);
-    process.exit(1); // Exit the process with a failure code
-  }
 };
 
 startServer();
