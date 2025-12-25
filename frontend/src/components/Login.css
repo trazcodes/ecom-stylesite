@@ -24,6 +24,28 @@
     max-height: 900px !important;
     
 }
-/* Login.css */
 
-/* Custom input styles */
+.login-body {
+  height: 500px;          
+  overflow: hidden;       
+  position: relative;
+}
+
+.login-body .slick-slider,
+.login-body .slick-list,
+.login-body .slick-track {
+  height: 100%;
+}
+
+.login-body .slick-slide > div {
+  height: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-slick-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}

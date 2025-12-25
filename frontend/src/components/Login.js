@@ -8,71 +8,71 @@ import photo2 from '../img/photo3.png';
 import photo3 from '../img/photo4.png';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { isAuth } from '../Common/auth';
+import API from '../utils/api';
 
 
 const Login = () => {
-    const navigate= useNavigate();
+    const navigate = useNavigate();
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordMatchError, setPasswordMatchError] = useState('');
- 
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const email = event.target.email.value;        
+        const email = event.target.email.value;
         try {
-            const response = await axios.post('/api/login', { email, password });
+            const response = await API.post('/api/login', { email, password });
             // IF SUCCESS, STORE TOKEN IN LOCAL STORAGE
-            if (response.status === 200) { 
-              const { user ,token } = response.data.result;
-              console.log(user,token);
-              localStorage.setItem('token', token);
-              localStorage.setItem('user', JSON.stringify(user));
+            if (response.status === 200) {
+                const { user, token } = response.data.result;
+                console.log(user, token);
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(user));
 
-              toast.success('Logged in Successfully.', {
-                autoClose: 1000,
-                onClose: () => window.location.replace('/home')
-              });
+                toast.success('Logged in Successfully.', {
+                    autoClose: 1000,
+                    onClose: () => window.location.replace('/home')
+                });
             } else {
-              toast.error('Failed to login. Please try again later.');
+                toast.error('Failed to login. Please try again later.');
             }
-          } catch (error) {
+        } catch (error) {
             // IF INVALID CREDENTIALS
             if (error.response && error.response.status === 401) {
-              toast.error('Invalid credentials. Please check your email and password.');
+                toast.error('Invalid credentials. Please check your email and password.');
             } else {
-              toast.error('An error occurred. Please try again later.');
+                toast.error('An error occurred. Please try again later.');
             }
-          }
         }
-       
+    }
+
 
     const handlePassword = (event) => {
         setPassword(event.target.value);
-       
+
     };
 
-   useEffect(()=>{
-    if(isAuth()){
-        navigate('/user/cart')
-    }
-   },[])
+    useEffect(() => {
+        if (isAuth()) {
+            navigate('/user/cart')
+        }
+    }, [])
 
 
     const settings = {
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 2500,
         dots: false,
         infinite: true,
-        slidesToShow: 1,
+        slidesToShow: 1,   // 👈 IMPORTANT
         slidesToScroll: 1,
-        speed: 500,
-        prevArrow: null,
-        nextArrow: null,
+        speed: 600,
+        arrows: false,     // 👈 PROPER way to hide arrows
+        pauseOnHover: false,
         responsive: [
             {
                 breakpoint: 992, // Medium devices (tablets, less than 992px)
@@ -123,15 +123,15 @@ const Login = () => {
                                     <div className="mb-4 position-relative">
                                         <label htmlFor="email" className="login-label form-label"><i className="fa-solid fa-lg fa-envelope ps-2 pt-3"></i> Email</label>
                                         <div className="input-group">
-                                            <input type="email" className="form-control" value={email} id="email" onChange={(e)=>{setEmail(e.target.value)}} name="email" required placeholder="Enter email" />
-                                           
+                                            <input type="email" className="form-control" value={email} id="email" onChange={(e) => { setEmail(e.target.value) }} name="email" required placeholder="Enter email" />
+
                                         </div>
                                     </div>
                                     <div className="mb-4">
-                                    <label htmlFor="password" className="form-label"><i className="fa-solid fa-lg fa-lock ps-2 pt-3"></i> Password</label>
-                                    <input type="password" className="form-control" id="password" name="password" required placeholder="Enter Password" onChange={handlePassword} />
-                                </div>
-                               
+                                        <label htmlFor="password" className="form-label"><i className="fa-solid fa-lg fa-lock ps-2 pt-3"></i> Password</label>
+                                        <input type="password" className="form-control" id="password" name="password" required placeholder="Enter Password" onChange={handlePassword} />
+                                    </div>
+
                                     <div className="login-btn mb-3">
                                         <button type="submit" className="btn btn-warning">Login</button>
                                     </div>
@@ -139,15 +139,15 @@ const Login = () => {
 
                                 <div className="login-small mb-2">OR</div>
                                 <div className="login-small">Forgot Password?</div>
-                                <div className="login-small">Don't have an Account? <span onClick={()=>{window.location.replace('/register')}}>Register Now</span></div>
+                                <div className="login-small">Don't have an Account? <span onClick={() => { window.location.replace('/register') }}>Register Now</span></div>
                             </div>
-                            <ToastContainer/>
+                            <ToastContainer />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     );
-    };
+};
 
 export default Login;
